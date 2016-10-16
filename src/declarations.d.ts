@@ -12,6 +12,11 @@ declare module "react-native-button" {
     export default class Button extends Component<Props, any> {}
 }
 
+declare module "react-native-camera" {
+  const value: any;
+  export default value;
+}
+
 /*
 // If you are lazy and don't care about the strict typings:
 
