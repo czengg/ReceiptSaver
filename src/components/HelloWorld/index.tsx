@@ -44,10 +44,8 @@ export default class HelloWorld extends Component<Props, State> {
   };
 
   state = {
-    counter: 0,
+    counter: 0
   };
-
-  camera = {};
 
   onPress = () => {
     const counter = this.state.counter + 1;
@@ -58,13 +56,12 @@ export default class HelloWorld extends Component<Props, State> {
     return this.setState({ counter: 0 }, () => alert(this.props.alert));
   }
 
-  takePicture() {
-    // if (Object.keys(this.camera).length) {
-    //   this.camera.capture()
-    //     .then((data) => console.log(data))
-    //     .catch(err => console.error(err));
-    // }
-    alert('here!');
+  takePicture = () {
+    if (Object.keys(this.camera).length) {
+      this.camera.capture()
+        .then((data: any) => console.log(data))
+        .catch((err: any) => console.error(err));
+    }
   }
 
   render() {
@@ -74,13 +71,13 @@ export default class HelloWorld extends Component<Props, State> {
     return (
       <View style={this.props.style}>
         <Camera
-          // ref={(cam) => {
-          //   this.camera = cam;
-          // }}
+          ref={(cam: any) => {
+            this.camera = cam;
+          }}
           style={styles.preview}
           aspect={Camera.constants.Aspect.fill}
         >
-          <Text style={styles.capture} onPress={this.takePicture.bind(this)}>[CAPTURE]</Text>
+          <Text style={styles.capture} onPress={this.takePicture}>[CAPTURE]</Text>
         </Camera>
       </View>
     );
